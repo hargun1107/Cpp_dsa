@@ -1,0 +1,16 @@
+# Ignore compiled files and executables
+*.exe
+*.o
+*.obj
+
+# Ignore temporary build files
+*.out
+*.dll
+*.pdb
+
+# Ignore VSCode settings (optional)
+.vscode/
+
+# Ignore system files
+Thumbs.db
+desktop.ini
