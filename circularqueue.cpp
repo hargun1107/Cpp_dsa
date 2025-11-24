@@ -7,7 +7,7 @@ int f=-1;
 int r=-1;
 
 void enqueue (int x) {
-    if (r==n-1) {
+    if ((r+1)%n==f) {
         cout<<"Overflow"<<endl;
     }
     else if (f==-1 && r==-1) {
@@ -16,7 +16,7 @@ void enqueue (int x) {
         queue[r]=x;
     }
     else {
-        r++;
+        r=(r+1)%n;
         queue[r]=x;
         cout<<"Entered at "<<r<<endl;
     }
@@ -34,24 +34,28 @@ int dequeue () {
     }
     else {
         int x = queue[f];
-        f++;
+        f=(f+1)%n;
         return x;
     }
 }
 
-void display () {
-    if (f==-1 && r==-1) {
-        cout<<"Queue Empty";
-    }
-    else {
-        for (int i=f; i<=r; i++) {
-            cout<<queue[i]<<" ";
+void display() {
+    if (f == -1 && r == -1) {
+        cout << "Queue Empty" << endl;
+    } else {
+        int i = f;
+        while (true) {
+            cout << queue[i] << " ";
+            if (i == r) break;
+            i = (i + 1) % n;
         }
-        cout<<endl;
+        cout << endl;
     }
 }
 
+
 int main () {
+    cin.clear();
     cout<<"1. Enqueue 2.Dequeue 3.Display 4.Exit"<<endl;
     int ch;
     do {
